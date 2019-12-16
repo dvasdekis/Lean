@@ -9,23 +9,23 @@ MAINTAINER QuantConnect <contact@quantconnect.com>
 
 #################################
 # Option 1: Download from Master
-# RUN \
-#     wget https://github.com/QuantConnect/Lean/archive/master.zip && \
-#     unzip master.zip -d /root/ && \
-#     mv /root/Lean-master /root/Lean
-# RUN \
-#     cd /root/Lean && \
-#     sed -i 's/4.5/4.0/' Algorithm.VisualBasic/QuantConnect.Algorithm.VisualBasic.vbproj && \
-#     wget https://dist.nuget.org/win-x86-commandline/latest/nuget.exe && \
-#     mono nuget.exe restore QuantConnect.Lean.sln -NonInteractive && \
-#     msbuild QuantConnect.Lean.sln /property:Configuration=Release && \
-#     cd /root/Lean/Launcher/bin/Release/
+RUN \
+     wget https://github.com/QuantConnect/Lean/archive/master.zip && \
+     unzip master.zip -d /root/ && \
+     mv /root/Lean-master /root/Lean
+RUN \
+     cd /root/Lean && \
+     sed -i 's/4.5/4.0/' Algorithm.VisualBasic/QuantConnect.Algorithm.VisualBasic.vbproj && \
+     wget https://dist.nuget.org/win-x86-commandline/latest/nuget.exe && \
+     mono nuget.exe restore QuantConnect.Lean.sln -NonInteractive && \
+     msbuild QuantConnect.Lean.sln /property:Configuration=Release && \
+     cd /root/Lean/Launcher/bin/Release/
 #################################
 
 
 ################################
 # Option 2: Run Local Binaries:
-COPY ./Launcher/bin/Release /root/Lean/Launcher/bin/Release
+# COPY ./Launcher/bin/Release /root/Lean/Launcher/bin/Release
 #################################
 
 # Finally.
